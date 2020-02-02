@@ -11,8 +11,6 @@ create table user(
     username varchar(63) not null unique,
     email varchar(255) not null unique,
     password varchar(255),
-    firstname varchar(255),
-    lastname varchar(255),
     creation_time timestamp default current_timestamp,
     avatar_location varchar(127),
     biography varchar(255)
