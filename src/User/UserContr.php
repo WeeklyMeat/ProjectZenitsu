@@ -1,16 +1,15 @@
 <?php
+    require_once "UserModel.php";
 
-    class UserContr {
+    class UserContr extends UserModel {
 
         // Member Functions
-        function __construct() {
+        public function createUser($username, $email, $password) {
 
-
-        }
-
-        function create() {
-
-            // Use Model
+            if($this->doesExist($username, "username") || $this->doesExist($email, "email")) {
+                return false;
+            }
+            return $this->setUser($username, $email, $password);
         }
 
         public function login($username, $password) {
@@ -18,10 +17,9 @@
             if($this->authenticate($username, $password)) {
 
                 session_start();
-
-                $user = new UserModel();
-                $_session["user"] = $user;
-
+                session_regenerate_id();
+                $_session["user"] = $username;
+                
                 return true;
             }
             else {
@@ -32,7 +30,12 @@
 
         protected function authenticate($username, $password) {
 
-            // Use Model
+            if(!$this->doesExist($username, "username")) {
+                return false;
+            }
+
+            $user = $this->getUser($username);
+            return password_verify($password, $user['password']);
         }
 
         public function logout() {
