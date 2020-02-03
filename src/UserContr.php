@@ -1,15 +1,25 @@
 <?php
     require_once "UserModel.php";
+    require_once "UserModelInterface.php";
 
-    class UserContr extends UserModel {
+    class UserContr {
+
+        // Member Variables
+        protected $userModel;
+
+        // Constructor
+        public function __construct(UserModelInterface $userModel) {
+
+            $this->userModel = $userModel;
+        }
 
         // Member Functions
         public function createUser($username, $email, $password) {
 
-            if($this->doesExist($username, "username") || $this->doesExist($email, "email")) {
+            if($this->userModel->getUserByUsername($username) || $this->userModel->getUserByEmail($email)) {
                 return false;
             }
-            return $this->setUser($username, $email, $password);
+            return $this->userModel->setUser($username, $email, $password);
         }
 
         public function login($username, $password) {
@@ -18,8 +28,8 @@
 
                 session_start();
                 session_regenerate_id();
-                $_session["user"] = $username;
-                
+                $_SESSION["user"] = $username;
+                session_write_close();
                 return true;
             }
             else {
@@ -30,11 +40,11 @@
 
         protected function authenticate($username, $password) {
 
-            if(!$this->doesExist($username, "username")) {
+            if(!$this->userModel->getUserByUsername($username, "username")) {
                 return false;
             }
 
-            $user = $this->getUser($username);
+            $user = $this->userModel->getUserByUsername($username);
             return password_verify($password, $user['password']);
         }
 
