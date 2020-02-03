@@ -2,8 +2,8 @@
 
     interface PostModelInterface {
 
-        public function setPost();
+        public function setPost($content, $userFK, $labelFK);
         public function getPostByID();
-        public function getPostByLabel();
-        public function getAllPost();
+        public function getMultiplePosts($limit);
+        public function getMultiplePostsByLabel($limit, $labelID);
     }

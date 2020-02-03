@@ -24,11 +24,15 @@
 
         }
 
-        public function getPostByLabel() {
+        public function getMultiplePosts($limit) {
 
+            $result = $this->dbc->query('select * from post order by creation_time desc limit '. $limit);
+            return $result->fetchAll();
         }
 
-        public function getAllPost() {
+        public function getMultiplePostsByLabel($limit, $labelID) {
 
+            $result = $this->dbc->query('select * from post where id_label = '. $labelID .' order by creation_time desc limit '. $limit);
+            return $result->fetchAll();
         }
     }
