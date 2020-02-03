@@ -1,6 +1,6 @@
 <?php
-    require_once "UserModel.php";
-    require_once "UserModelInterface.php";
+    require_once "model\\UserModel.php";
+    require_once "model\\UserModelInterface.php";
 
     class UserContr {
 
@@ -29,6 +29,7 @@
                 session_start();
                 session_regenerate_id();
                 $_SESSION["user"] = $username;
+                $_SESSION["id"] = $this->userModel->getUserByUsername($username)['id_user'];
                 session_write_close();
                 return true;
             }
