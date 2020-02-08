@@ -9,5 +9,5 @@
     // $contr->logout();
 
     $model = new PostModel(new DatabaseConnection());
-    echo var_dump($model->getMultiplePostsByLabel(3, 1));
+    echo var_dump($model->getMultiplePosts(0, 20));
 ?>

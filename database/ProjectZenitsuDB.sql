@@ -39,6 +39,7 @@ create table post(
     creation_time timestamp default current_timestamp,
     id_user int not null,
     id_label int not null,
+    is_deleted tinyint(1) default 0,
     constraint id_user_p foreign key (id_user) references user(id_user),
     constraint id_label_p foreign key (id_label) references label(id_label)
 );

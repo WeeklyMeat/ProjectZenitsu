@@ -11,6 +11,7 @@
         public function __construct(DatabaseConnectionInterface $Database) {
 
             $this->dbc = $Database->connect();
+            $this->dbc->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
         }
 
         // Member Functions$
@@ -24,15 +25,17 @@
 
         }
 
-        public function getMultiplePosts($limit) {
+        public function getMultiplePosts($offset, $limit) {
 
-            $result = $this->dbc->query('select * from post order by creation_time desc limit '. $limit);
-            return $result->fetchAll();
+            $stmt = $this->dbc->prepare('select * from post order by creation_time desc limit ?, ?');
+            $stmt->execute(array($offset, $limit));
+            return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByLabel($limit, $labelID) {
+        public function getMultiplePostsByLabel($offset, $limit, $labelID) {
 
-            $result = $this->dbc->query('select * from post where id_label = '. $labelID .' order by creation_time desc limit '. $limit);
-            return $result->fetchAll();
+            $stmt = $this->dbc->prepare('select * from post where id_label = ? order by creation_time desc limit ?, ?');
+            $stmt->execute(array($labelID, $offset, $limit));
+            return $stmt->fetchAll();
         }
     }
