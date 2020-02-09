@@ -7,6 +7,6 @@
 
         public function getPostByID($ID) : ?array;
         public function getMultiplePosts($offset, $limit) : ?array;
-        public function getMultiplePostByUser($offset, $limit, $userID) : ?array;
+        public function getMultiplePostsByUser($offset, $limit, $userID) : ?array;
         public function getMultiplePostsByLabel($offset, $limit, $labelID) : ?array;
     }

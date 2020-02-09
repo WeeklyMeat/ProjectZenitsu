@@ -41,7 +41,7 @@
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostByUser($offset, $limit, $userID) : ?array {
+        public function getMultiplePostsByUser($offset, $limit, $userID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_user = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
