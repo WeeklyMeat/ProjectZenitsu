@@ -60,6 +60,7 @@ create table comment(
     creation_time timestamp default current_timestamp,
     id_user int not null,
     id_post int not null,
+    is_deleted tinyint(1) default 0,
     constraint id_user_c foreign key (id_user) references user(id_user),
     constraint id_post_c foreign key (id_post) references post(id_post)
 );

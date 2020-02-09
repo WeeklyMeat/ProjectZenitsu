@@ -1,8 +1,8 @@
 <?php
     require_once "DatabaseConnection.php";
-    require_once "PostModelInterface.php";
+    require_once "CommentModelInterface.php";
 
-    class PostModel implements PostModelInterface {
+    class CommentModel implements CommentModelInterface {
 
         // Member Variables
         protected $dbc;
@@ -15,15 +15,15 @@
         }
 
         // Member Functions
-        public function setPost($content, $userID, $labelID) : bool {
+        public function setComment($content, $userID, $labelID) : bool {
 
-            $stmt = $this->dbc->prepare('insert into post(content, id_user, id_label) values (?, ?, ?)');
-            return $stmt->execute(array($content, $userID, $labelID));
+            $stmt = $this->dbc->prepare('insert into comment(content, id_user, id_post) values (?, ?, ?)');
+            return $stmt->execute(array($content, $userID, $postID));
         }
 
-        public function unsetPost($ID) : bool {
+        public function unsetComment($ID) : bool {
 
-            $stmt = $this->dbc->prepare('update post set is_deleted = 1 where id_post = ?');
+            $stmt = $this->dbc->prepare('update comment set is_deleted = 1 where id_comment = ?');
             return $stmt->execute(array($ID));
         }
 
