@@ -14,7 +14,7 @@
         }
 
         // Member Functions
-        public function createUser($username, $email, $password) {
+        public function createUser($username, $email, $password) : bool {
 
             if($this->userModel->getUserByUsername($username) || $this->userModel->getUserByEmail($email)) {
                 return false;
@@ -22,7 +22,7 @@
             return $this->userModel->setUser($username, $email, $password);
         }
 
-        public function login($username, $password) {
+        public function login($username, $password) : bool {
 
             if($this->authenticate($username, $password)) {
 
@@ -39,7 +39,7 @@
             }
         }
 
-        protected function authenticate($username, $password) {
+        protected function authenticate($username, $password) : bool {
 
             if(!$this->userModel->getUserByUsername($username, "username")) {
                 return false;
@@ -49,7 +49,7 @@
             return password_verify($password, $user['password']);
         }
 
-        public function logout() {
+        public function logout() : void {
 
             session_start();
             session_unset();
