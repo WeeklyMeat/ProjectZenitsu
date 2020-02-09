@@ -27,31 +27,10 @@
             return $stmt->execute(array($ID));
         }
 
-        public function getPostByID($ID) : ?array {
+        public function getMultipleCommentsByPost($postID) : ?array {
 
-            $stmt = $this->dbc->prepare('select * from post where id_post = ?');
-            $stmt->execute(array($ID));
-            return $stmt->fetch();
-        }
-
-        public function getMultiplePosts($offset, $limit) : ?array {
-
-            $stmt = $this->dbc->prepare('select * from post where is_deleted = 0 order by creation_time desc limit ?, ?');
-            $stmt->execute(array($offset, $limit));
-            return $stmt->fetchAll();
-        }
-
-        public function getMultiplePostsByUser($offset, $limit, $userID) : ?array {
-
-            $stmt = $this->dbc->prepare('select * from post where id_user = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
-            $stmt->execute(array($userID, $offset, $limit));
-            return $stmt->fetchAll();
-        }
-
-        public function getMultiplePostsByLabel($offset, $limit, $labelID) : ?array {
-
-            $stmt = $this->dbc->prepare('select * from post where id_label = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
-            $stmt->execute(array($labelID, $offset, $limit));
+            $stmt = $this->dbc->prepare('select * from post where id_post = ? and is_deleted = 0 order by creation_time desc');
+            $stmt->execute(array($postID));
             return $stmt->fetchAll();
         }
     }
