@@ -1,6 +1,5 @@
 <?php
-    require_once "DatabaseConnection.php";
-    require_once "UserModelInterface.php";
+    require "Autoloader.php";
 
     class UserModel implements UserModelInterface {
 

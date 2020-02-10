@@ -1,6 +1,5 @@
 <?php
-    require_once "DatabaseConnection.php";
-    require_once "CommentModelInterface.php";
+    require "Autoloader.php";
 
     class CommentModel implements CommentModelInterface {
 

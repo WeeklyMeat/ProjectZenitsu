@@ -1,6 +1,5 @@
 <?php
-    require_once "model\\PostModel.php";
-    require_once "model\\PostModelInterface.php";
+    require "Autoloader.php";
 
     class PostContr {
 

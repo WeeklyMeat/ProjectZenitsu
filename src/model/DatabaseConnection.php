@@ -1,5 +1,5 @@
 <?php
-    require_once "DatabaseConnectionInterface.php";
+    require "Autoloader.php";
 
     class DatabaseConnection implements DatabaseConnectionInterface{
 

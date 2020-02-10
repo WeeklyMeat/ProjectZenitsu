@@ -1,6 +1,5 @@
 <?php
-    require_once "model\\UserModel.php";
-    require_once "model\\UserModelInterface.php";
+    require "Autoloader.php";
 
     class UserContr {
 

@@ -1,7 +1,5 @@
 <?php
-    require_once "Controller\\UserContr.php";
-    require_once "Controller\\PostContr.php";
-    require_once "Controller\\CommentContr.php";
+    require "Autoloader.php";
 
     $dbc = new DatabaseConnection();
     $userContr = new UserContr(new UserModel($dbc));
