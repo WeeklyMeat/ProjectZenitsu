@@ -1,17 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Project Zenitsu</title>
+    <meta name="description" content="bla">
+    <meta name="author" content="WeeklyMeat">
+    <link rel="stylesheet" type="text/css" href="general.css">
+</head>
 <?php
     require "Autoloader.php";
 
     $dbc = new DatabaseConnection();
-    $userContr = new UserContr(new UserModel($dbc));
-    $commentContr = new CommentContr(new CommentModel($dbc));
     $postContr = new PostContr(new PostModel($dbc));
-    $followContr = new FollowContr(new UserFollowsLabelModel($dbc));
-    $likeContr = new LikeContr(new UserLikesCommentModel($dbc));
-
-    $userContr->login("WeeklyMeat", "1234");
-
-    $i = 3;
-    echo var_dump($postContr->getPostByID($i));
-    echo var_dump($commentContr->getMultipleCommentsByPost($i));
-    $userContr->logout();
 ?>
+<body>
+    <div class = "sidebar" id = "sidebar_left"></div>
+    <div id = "content">
+        <?php
+            $posts = $postContr->getMultiplePosts(0, 20);
+            for ($i = 0; $i < count($posts); $i++) {
+
+                echo "<div class = 'post'>". $posts[$i]['content'] ."</div>";
+            }
+        ?>
+    </div>
+    <div class = "sidebar" id = "sidebar_right"></div>
+</body>
+</html>
