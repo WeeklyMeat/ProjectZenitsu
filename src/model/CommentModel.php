@@ -15,7 +15,7 @@
         }
 
         // Member Functions
-        public function setComment($content, $userID, $labelID) : bool {
+        public function setComment($content, $userID, $postID) : bool {
 
             $stmt = $this->dbc->prepare('insert into comment(content, id_user, id_post) values (?, ?, ?)');
             return $stmt->execute(array($content, $userID, $postID));
@@ -29,7 +29,7 @@
 
         public function getMultipleCommentsByPost($postID) : ?array {
 
-            $stmt = $this->dbc->prepare('select * from post where id_post = ? and is_deleted = 0 order by creation_time desc');
+            $stmt = $this->dbc->prepare('select c.id_comment, c.content, c.like_count, c.creation_time, c.id_user, c.id_post from comment as c left join post as p on p.id_post = c.id_post where p.id_post = ?');
             $stmt->execute(array($postID));
             return $stmt->fetchAll();
         }

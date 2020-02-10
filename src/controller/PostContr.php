@@ -19,13 +19,13 @@
             return $this->postModel->setPost($content, $userFK, $labelFK);
         }
 
-        public function deletePost($UserID, $PostID) : bool {
+        public function deletePost($userID, $postID) : bool {
 
-            $Post = $this->postModel->getPostByID($PostID);
+            $post = $this->postModel->getPostByID($PostID);
 
-            if($Post['id_user'] === $UserID) {
+            if($post['id_user'] === $userID) {
 
-                return $this->postModel->unsetPost($PostID);
+                return $this->postModel->unsetPost($postID);
             }
             else {
 
@@ -33,11 +33,11 @@
             }
         }
 
-        public function getPostByID($ID) {
+        public function getPostByID($postID) {
 
-            if(is_int($ID)) {
+            if(is_int($postID)) {
 
-                return $this->postModel->getPostByID();
+                return $this->postModel->getPostByID($postID);
             }
             else {
 
