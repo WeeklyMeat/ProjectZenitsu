@@ -33,27 +33,23 @@
             }
         }
 
-        public function getPostByID($postID) {
+        public function getPostByID($postID) : ?array {
 
-            if(is_int($postID)) {
-
-                return $this->postModel->getPostByID($postID);
-            }
-            else {
-
-                return false;
-            }
+            return $this->postModel->getPostByID($postID);
         }
 
-        public function getMultiplePosts($offset, $limit) {
+        public function getMultiplePosts($offset, $limit) : ?array {
 
-            if(is_int($offset)) {
+            return $this->postModel->getMultiplePosts($offset, $limit);
+        }
 
-                return $this->postModel->getMultiplePosts($offset, $limit);
-            }
-            else {
+        public function getMultiplePostsByUser($offset, $limit, $userID) : ?array {
 
-                return false;
-            }
+            return $this->postModel->getMultiplePostsByUser($offset, $limit, $userID);
+        }
+
+        public function getMultiplePostsByLabel($offset, $limit, $labelID) : ?array {
+
+            return getMultiplePostsByLabel($offset, $limit, $labelID);
         }
     }
