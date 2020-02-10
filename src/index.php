@@ -8,8 +8,6 @@
 
     $userContr->login("WeeklyMeat", "1234");
 
-    $userContr->followLabel($_SESSION["id"], 3);
-
     $i = 1;
     echo var_dump($postContr->getPostByID($i));
     echo var_dump($commentContr->getMultipleCommentsByPost($i));

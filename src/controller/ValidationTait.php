@@ -1,6 +1,6 @@
 <?php
 
-    trait Validation {
+    trait ValidationTrait {
 
         protected static function placeholder() {
 

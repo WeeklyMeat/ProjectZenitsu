@@ -20,16 +20,16 @@
             return $stmt->execute(array($content, $userID, $labelID));
         }
 
-        public function unsetPost($ID) : bool {
+        public function unsetPost($postID) : bool {
 
             $stmt = $this->dbc->prepare('update post set is_deleted = 1 where id_post = ?');
-            return $stmt->execute(array($ID));
+            return $stmt->execute(array($postID));
         }
 
-        public function getPostByID($ID) : ?array {
+        public function getPostByID($postID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_post = ?');
-            $stmt->execute(array($ID));
+            $stmt->execute(array($postID));
             return $stmt->fetch();
         }
 

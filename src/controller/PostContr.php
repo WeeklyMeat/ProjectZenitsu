@@ -13,9 +13,9 @@
         }
 
         // Member Functions
-        public function createPost($content, $userFK, $labelFK) : bool {
+        public function createPost($content, $userID, $labelID) : bool {
 
-            return $this->postModel->setPost($content, $userFK, $labelFK);
+            return $this->postModel->setPost($content, $userID, $labelID);
         }
 
         public function deletePost($userID, $postID) : bool {
@@ -49,6 +49,6 @@
 
         public function getMultiplePostsByLabel($offset, $limit, $labelID) : ?array {
 
-            return getMultiplePostsByLabel($offset, $limit, $labelID);
+            return $this->postModel->getMultiplePostsByLabel($offset, $limit, $labelID);
         }
     }
