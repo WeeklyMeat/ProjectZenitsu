@@ -102,7 +102,7 @@ end$$
 create trigger label_follower_increment after insert on user_follows_label
 for each row
 begin
-    update label set follower_count = follower_cunt + 1 where id_label = new.id_label;
+    update label set follower_count = follower_count + 1 where id_label = new.id_label;
 end$$
 
 /* Decrements */

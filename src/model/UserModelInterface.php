@@ -3,6 +3,10 @@
     interface UserModelInterface {
 
         public function setUser($username, $email, $password) : bool;
-        public function GetUserByUsername($username) : ?array;
-        public function GetUserByEmail($email) : ?array;
+
+        public function getUserByUsername($username);
+        public function getUserByEmail($email);
+
+        public function followUser($userFollowing, $userToBeFollowed) : bool;
+        public function followLabel($userID, $labelID) : bool;
     }
