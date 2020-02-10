@@ -1,6 +1,5 @@
 <?php
-    require_once "model\\CommentModel.php";
-    require_once "model\\CommentModelInterface.php";
+    require "Autoloader.php";
 
     class CommentContr {
 

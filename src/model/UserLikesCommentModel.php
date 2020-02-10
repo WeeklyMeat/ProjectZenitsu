@@ -1,5 +1,5 @@
 <?php
-    include "Autoloader.php";
+    require "Autoloader.php";
 
     class UserLikesCommentModel implements LikeModelInterface {
 

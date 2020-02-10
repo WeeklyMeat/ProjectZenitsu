@@ -32,16 +32,4 @@
             $stmt->execute(array($email));
             return $stmt->fetch();
         }
-
-        public function followUser($userFollowing, $userToBeFollowed) : bool {
-
-            $stmt = $this->dbc->prepare('insert into user_follows_user(id_user_following, id_user_followed) values (?, ?)');
-            return $stmt->execute(array($userFollowing, $userToBeFollowed));
-        }
-
-        public function followLabel($userID, $labelID) : bool {
-
-            $stmt = $this->dbc->prepare('insert into user_follows_label(id_user, id_label) values (?, ?)');
-            return $stmt->execute(array($userID, $labelID));
-        }
     }

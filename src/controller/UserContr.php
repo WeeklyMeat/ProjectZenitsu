@@ -54,14 +54,4 @@
             session_unset();
             session_destroy();
         }
-
-        public function followUser($userFollowing, $userToBeFollowed) : bool {
-
-            return $this->userModel->followUser($userFollowing, $userToBeFollowed);
-        }
-
-        public function followLabel($userID, $labelID) : bool {
-
-            return $this->userModel->followLabel($userID, $labelID);
-        }
     }
