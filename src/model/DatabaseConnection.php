@@ -8,11 +8,6 @@
         private $database = 'ProjectZenitsuDB';
         private $user = 'ProjectZenitsuDB_User';
         private $password = '1234';
-
-        // Constructor
-        public function __construct() {
-
-        }
         
         // Member Functions
         public function connect() {

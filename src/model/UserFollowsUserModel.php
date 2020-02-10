@@ -10,6 +10,7 @@
         public function __construct(DatabaseConnectionInterface $Database) {
 
             $this->dbc = $Database->connect();
+            $this->dbc->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
         }
 
         // Member Functions
