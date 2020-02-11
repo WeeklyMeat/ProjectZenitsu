@@ -1,7 +1,7 @@
 create database ProjectZenitsuDB;
 
-create user 'ProjectZenitsuDB_User'@'localhost' identified by '1234';
-grant update, insert, delete, select on ProjectZenitsuDB.* to ProjectZenitsuDB_User;
+/*create user 'ProjectZenitsuDB_User'@'localhost' identified by '1234';
+grant update, insert, delete, select on ProjectZenitsuDB.* to ProjectZenitsuDB_User;*/
 
 use ProjectZenitsuDB;
 
@@ -14,7 +14,7 @@ create table user(
     creation_time timestamp default current_timestamp,
     avatar_location varchar(127),
     biography varchar(255),
-    role char not null
+    role char not null default 'u'
 );
 
 create table label(

@@ -12,6 +12,7 @@
 
     $dbc = new DatabaseConnection();
     $postContr = new PostContr(new PostModel($dbc));
+    $userContr = new UserContr(new UserModel($dbc));
 ?>
 <body>
     <div class = "sidebar" id = "sidebar_left"></div>
