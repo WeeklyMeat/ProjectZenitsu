@@ -14,19 +14,19 @@
         }
 
         // Member Functions
-        public function setFollow($userID, $contentID) : bool {
+        public function setFollow(int $userID, int $contentID) : bool {
 
             $stmt = $this->dbc->prepare('insert into user_follows_label(id_user, id_label) values (?, ?)');
             return $stmt->execute(array($userID, $contentID));
         }
 
-        public function unsetFollow($userID, $contentID) : bool {
+        public function unsetFollow(int $userID, int $contentID) : bool {
 
             $stmt = $this->dbc->prepare('delete from user_follows_label where id_user = ? and id_label = ?');
             return $stmt->execute(array($userID, $contentID));
         }
 
-        public function getFollow($userID, $contentID) : ?array {
+        public function getFollow(int $userID, int $contentID) : ?array {
 
             $stmt = $this->dbc->prepare('select from user_follows_label where id_user = ? and id_label = ?');
             return $stmt->execute(array($userID, $contentID))->fetch();
