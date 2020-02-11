@@ -14,40 +14,40 @@
         }
 
         // Member Functions
-        public function setPost($content, $userID, $labelID) : bool {
+        public function setPost(string $content, int $userID, int $labelID) : bool {
 
             $stmt = $this->dbc->prepare('insert into post(content, id_user, id_label) values (?, ?, ?)');
             return $stmt->execute(array($content, $userID, $labelID));
         }
 
-        public function unsetPost($postID) : bool {
+        public function unsetPost(int $postID) : bool {
 
             $stmt = $this->dbc->prepare('update post set is_deleted = 1 where id_post = ?');
             return $stmt->execute(array($postID));
         }
 
-        public function getPostByID($postID) : ?array {
+        public function getPostByID(int $postID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_post = ?');
             $stmt->execute(array($postID));
             return $stmt->fetch();
         }
 
-        public function getMultiplePosts($offset, $limit) : ?array {
+        public function getMultiplePosts(int $offset, int $limit) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($offset, $limit));
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByUser($offset, $limit, $userID) : ?array {
+        public function getMultiplePostsByUser(int $offset, int $limit, int $userID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_user = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByLabel($offset, $limit, $labelID) : ?array {
+        public function getMultiplePostsByLabel(int $offset, int $limit, int $labelID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_label = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($labelID, $offset, $limit));

@@ -2,7 +2,7 @@
 
     interface FollowModelInterface {
 
-        public function setFollow($userID, $contentID) : bool;
-        public function unsetFollow($userID, $contentID) : bool;
-        public function getFollow($userID, $contentID) : ?array;
+        public function setFollow(int $userID, int $contentID) : bool;
+        public function unsetFollow(int $userID, int $contentID) : bool;
+        public function getFollow(int $userID, int $contentID) : ?array;
     }

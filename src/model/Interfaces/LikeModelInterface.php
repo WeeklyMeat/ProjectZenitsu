@@ -2,7 +2,7 @@
 
     interface LikeModelInterface {
 
-        public function setLike($userID, $contentID) : bool;
-        public function unsetLike($userID, $contentID) : bool;
-        public function getLike($userID, $contentID) : ?array;
+        public function setLike(int $userID, int $contentID) : bool;
+        public function unsetLike(int $userID, int $contentID) : bool;
+        public function getLike(int $userID, int $contentID) : ?array;
     }

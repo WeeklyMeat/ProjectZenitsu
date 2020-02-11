@@ -14,20 +14,20 @@
         }
 
         // Member Functions
-        public function setUser($username, $email, $password) : bool {
+        public function setUser(string $username, string $email, string $password) : bool {
 
             $stmt = $this->dbc->prepare('insert into user(username, email, password) values (?, ?, ?)');
             return $stmt->execute(array($username, $email, password_hash($password, PASSWORD_DEFAULT)));
         }
 
-        public function getUserByUsername($username){
+        public function getUserByUsername(string $username){
 
             $stmt = $this->dbc->prepare('select * from user where username = ?');
             $stmt->execute(array($username));
             return $stmt->fetch();
         }
 
-        public function getUserByEmail($email){
+        public function getUserByEmail(string $email){
 
             $stmt = $this->dbc->prepare('select * from user where email = ?');
             $stmt->execute(array($email));

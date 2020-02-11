@@ -2,8 +2,8 @@
 
     interface UserModelInterface {
 
-        public function setUser($username, $email, $password) : bool;
+        public function setUser(string $username, string $email, string $password) : bool;
 
-        public function getUserByUsername($username);
-        public function getUserByEmail($email);
+        public function getUserByUsername(string $username);
+        public function getUserByEmail(string $email);
     }
