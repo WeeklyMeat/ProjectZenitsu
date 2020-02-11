@@ -5,7 +5,7 @@
     <title>Project Zenitsu</title>
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
-    <link rel="stylesheet" type="text/css" href="general.css">
+    <link rel="stylesheet" type="text/css" href="style/general.css">
 </head>
 <?php
     require "Autoloader.php";
