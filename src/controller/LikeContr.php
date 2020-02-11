@@ -33,9 +33,9 @@
             return false;
         }
 
-        public function doesLike($userID, $contentID) : bool {
+        public function doesLike($userID, $contentID) : bool {  // Finds out if user already liked the content.
 
-            if(!empty($this->likeModel->getLike($userID, $contentID))) {
+            if(is_int($userID) && is_int($contentID) && !empty($this->likeModel->getLike($userID, $contentID))) {
 
                 return true;
             }
