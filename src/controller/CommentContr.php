@@ -13,18 +13,36 @@
         }
         
         // Member Functions
-        public function createComment($content, $userID, $labelID) : bool {
+        public function createComment($content, $userID, $postID) : bool {
 
-            return $this->commentModel->setComment($content, $userID, $labelID);
+            $content = trim(htmlspecialchars($content));
+
+            if (strlen($content) > 0 && strlen($content) <= 255 && is_int($userID) && is_int($postID))
+                return $this->commentModel->setComment($content, $userID, $postID);
+            
+            return false;
         }
 
-        public function deleteComment($commentID) : bool {
+        public function deleteComment($userID, $commentID) : bool {
 
-            return $this->commentModel->unsetComment($commentID);
+            if (is_int($commentID)) {
+
+                $comment = $this->commentModel->getCommentByID($commentID);
+
+                if($comment['id_user'] === $userID)
+                    return $this->commentModel->unsetPost($commentID);
+            }
+
+            return false;
         }
 
         public function getMultipleCommentsByPost($postID) : ?array {
 
-            return $this->commentModel->getMultipleCommentsByPost($postID);
+            if(is_int($postID)) {
+
+                return $this->commentModel->getMultipleCommentsByPost($postID);
+            }
+
+            return false;
         }
     }

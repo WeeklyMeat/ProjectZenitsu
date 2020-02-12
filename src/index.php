@@ -18,8 +18,8 @@
     <div id = "content">
         <?php
         
-            $posts = $postContr->getMultiplePosts(0, 20);
-            $postView = new postView($posts);
+            $post = $postContr->getMultiplePosts(0, 10);
+            $postView = new postView($post);
             $postView->outputPosts();
         ?>
     </div>

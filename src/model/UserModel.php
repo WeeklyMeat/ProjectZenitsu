@@ -24,13 +24,13 @@
 
             $stmt = $this->dbc->prepare('select * from user where username = ?');
             $stmt->execute(array($username));
-            return $stmt->fetch();
+            return $stmt->fetchAll();
         }
 
         public function getUserByEmail(string $email){
 
             $stmt = $this->dbc->prepare('select * from user where email = ?');
             $stmt->execute(array($email));
-            return $stmt->fetch();
+            return $stmt->fetchAll();
         }
     }

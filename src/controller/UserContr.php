@@ -15,10 +15,17 @@
         // Member Functions
         public function createUser($username, $email, $password) : bool {
 
-            if($this->userModel->getUserByUsername($username) || $this->userModel->getUserByEmail($email)) {
+            $username = trim(htmlspecialchars($username));
+            $email = trim(htmlspecialchars($email));
+            $password = trim(htmlspecialchars($password));
+
+            if($this->userModel->getUserByUsername($username) || $this->userModel->getUserByEmail($email))
                 return false;
-            }
-            return $this->userModel->setUser($username, $email, $password);
+
+            if(strlen($username) <= 255 && strlen($username) > 0 && strlen($email) <= 255 && strlen($email) > 0 && filter_var($email, FILTER_VALIDATE_EMAIL))
+                return $this->userModel->setUser($username, $email, $password);
+
+            return false;
         }
 
         public function login($username, $password) : bool {
@@ -40,6 +47,9 @@
 
         protected function authenticate($username, $password) : bool {
 
+            $username = trim(htmlspecialchars($username));
+            $password = trim(htmlspecialchars($password));
+
             if(!$this->userModel->getUserByUsername($username, "username")) {
                 return false;
             }
@@ -53,5 +63,15 @@
             session_start();
             session_unset();
             session_destroy();
+        }
+
+        protected function getUserByUsername($username) {
+
+            $username = trim(htmlspecialchars($username));
+
+            if(!empty($username))
+                return $this->userModel->getUserByUsername();
+
+            return false;
         }
     }

@@ -30,7 +30,7 @@
 
             $stmt = $this->dbc->prepare('select * from post where id_post = ?');
             $stmt->execute(array($postID));
-            return $stmt->fetch();
+            return $stmt->fetchAll();
         }
 
         public function getMultiplePosts(int $offset, int $limit) : ?array {
