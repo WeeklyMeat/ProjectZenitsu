@@ -14,12 +14,11 @@
     if(!isset($_SESSION))
         session_start();
 
-    $dbc = new DatabaseConnection();
-    $userContr = new UserContr(new UserModel($dbc));
-
     if(isset($_SESSION["user"]))
         header("Location: Index.php?mode=feed");
 
+    $dbc = new DatabaseConnection();
+    $userContr = new UserContr(new UserModel($dbc));
 ?>
 <body>
     <div class = "sidebar" id = "sidebar_left">

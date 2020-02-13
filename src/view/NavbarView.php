@@ -5,8 +5,10 @@
         // Member Functions
         public static function outputNavOptionsLoggedOut () : void {
 
-            echo "\n<a href='Login.php' class='nav-link'><li class='nav-item'>Login</li></a>\n";
-            echo "\t\t\t<a href='Register.php' class='nav-link'><li class='nav-item'>Register</li></a>\n";
+            echo "\n\t\t\t\t<a href='Index.php' class='nav-link'><li class='nav-item'>Home</li></a>\n";
+            echo "\t\t\t\t<hr>\n";
+            echo "\t\t\t\t<a href='Login.php' class='nav-link'><li class='nav-item'>Login</li></a>\n";
+            echo "\t\t\t\t<a href='Register.php' class='nav-link'><li class='nav-item'>Register</li></a>\n";
             return;
         }
 
