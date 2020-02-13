@@ -44,42 +44,42 @@
             return false;
         }
 
-        public function getMultiplePosts($offset, $limit) {
+        public function getNewestPosts($offset, $limit) {
 
             if(is_int($offset) && is_int($limit))
-                return $this->postModel->getMultiplePosts($offset, $limit);
+                return $this->postModel->getNewestPosts($offset, $limit);
 
             return false;
         }
 
-        public function getMultiplePostsByUser($offset, $limit, $userID) {
+        public function getPostsByUser($offset, $limit, $userID) {
 
             if(is_int($offset) && is_int($limit) && is_int($userID))
-                return $this->postModel->getMultiplePostsByUser($offset, $limit, $userID);
+                return $this->postModel->getPostsByUser($offset, $limit, $userID);
 
             return false;
         }
 
-        public function getMultiplePostsByLabel($offset, $limit, $labelID) {
+        public function getPostsByLabel($offset, $limit, $labelID) {
 
             if(is_int($offset) && is_int($limit) && is_int($labelID))
-                return $this->postModel->getMultiplePostsByLabel($offset, $limit, $labelID);
+                return $this->postModel->getPostsByLabel($offset, $limit, $labelID);
 
             return false;
         }
 
-        public function getMultiplePostsByFeed($offset, $limit, $userID) {
+        public function getPostsByLabelSubscriptions($offset, $limit, $userID) {
 
             if(is_int($offset) && is_int($limit) && is_int($userID))
-                return $this->postModel->getMultiplePostsByLabel($offset, $limit, $userID);
+                return $this->postModel->getPostsByLabelSubscriptions($offset, $limit, $userID);
 
             return false;
         }
 
-        public function getMultiplePostsByFollows($offset, $limit, $userID) {
+        public function getPostsByUserSubscribtions($offset, $limit, $userID) {
 
             if(is_int($offset) && is_int($limit) && is_int($userID))
-                return $this->postModel->getMultiplePostsByFollows($offset, $limit, $userID);
+                return $this->postModel->getPostsByUserSubscribtions($offset, $limit, $userID);
 
             return false;
         }

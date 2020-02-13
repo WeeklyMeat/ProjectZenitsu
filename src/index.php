@@ -32,25 +32,23 @@
         <?php
 
             if(isset($_GET["offset"]) && !empty($_GET["offset"]))
-                $offset = intval($_GET['offset']);
-                
-            if(isset($_GET["mode"]) && !empty($_GET["mode"])) {
+                $offset = intval($_GET["offset"]);
 
-                if(!isset($_SESSION["id"]))
-                    header("Location: Index.php");
+            if(isset($_SESSION["id"])) {
 
-                $mode = trim(htmlspecialchars($_GET["mode"]));
+                if(isset($_GET["mode"]) && !empty($mode = trim(htmlspecialchars($_GET["mode"])))) {
 
-                if($mode === "feed")
-                    $posts = $postContr->getMultiplePostsByFeed($offset ?? 0, 20, $_SESSION["id"]);
+                    if($mode === "feed")
+                        $posts = $postContr->getPostsByLabelSubscriptions($offset ?? 0, 20, $_SESSION["id"]);
 
-                if($mode === "follow")
-                    $posts = $postContr->getMultiplePostsByFollows($offset ?? 0, 20, $_SESSION["id"]);
+                    if($mode === "follow")
+                        $posts = $postContr->getPostsByUserSubscribtions($offset ?? 0, 20, $_SESSION["id"]);
+                }
+                else
+                    $posts = $postContr->getNewestPosts($offset ?? 0, 20);
             }
-            else {
-                    
-                $posts = $postContr->getMultiplePosts($offset ?? 0, 20);
-            }
+            else
+                $posts = $postContr->getNewestPosts($offset ?? 0, 20);
 
             $postView = new PostView($posts);
             $postView->outputPosts();

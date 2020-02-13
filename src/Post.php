@@ -6,25 +6,44 @@
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
     <link rel="stylesheet" type="text/css" href="style/general.css">
+    <link rel="stylesheet" type="text/css" href="style/darkmode.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <?php
     require "Autoloader.php";
 
     $dbc = new DatabaseConnection();
     $postContr = new PostContr(new PostModel($dbc));
-    $userContr = new UserContr(new UserModel($dbc));
 ?>
 <body>
-    <div class = "sidebar" id = "sidebar_left"></div>
-    <div id = "content">
+    <div class = "sidebar" id = "sidebar_left">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <a href="Index.php?mode=feed" class="nav-link"><li class="nav-item">Home</li></a>
+                <a href="Index.php" class="nav-link"><li class="nav-item">Discover</li></a>
+                <a href="Index.php?mode=follow" class="nav-link"><li class="nav-item">Followed</li></a>
+            </ul>
+        </nav>
+    </div>
+    <section id = "content">
         <?php
-            $posts = $postContr->getMultiplePosts(0, 20);
-            for ($i = 0; $i < count($posts); $i++) {
 
-                echo "<div class = 'post'>". $posts[$i]['content'] ."</div>";
+            if(isset($_GET["post"]) && $postID = intval($_GET["post"])) {
+
+                $post = $postContr->getPostByID($postID);
+
+                if(empty($post))
+                    header("Location: Index.php");
+                    
+                $postView = new PostView($post);
+                $postView->outputPosts();
+            }
+            else {
+
+                header("Location: Index.php");
             }
         ?>
-    </div>
+    </section>
     <div class = "sidebar" id = "sidebar_right"></div>
 </body>
 </html>

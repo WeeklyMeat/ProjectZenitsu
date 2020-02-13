@@ -33,37 +33,37 @@
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePosts(int $offset, int $limit) : ?array {
+        public function getNewestPosts(int $offset, int $limit) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($offset, $limit));
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByUser(int $offset, int $limit, int $userID) : ?array {
+        public function getPostsByUser(int $offset, int $limit, int $userID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_user = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByLabel(int $offset, int $limit, int $labelID) : ?array {
+        public function getPostsByLabel(int $offset, int $limit, int $labelID) : ?array {
 
             $stmt = $this->dbc->prepare('select * from post where id_label = ? and is_deleted = 0 order by creation_time desc limit ?, ?');
             $stmt->execute(array($labelID, $offset, $limit));
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByFeed(int $offset, int $limit, int $userID) : ?array {
+        public function getPostsByLabelSubscriptions(int $offset, int $limit, int $userID) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.id_post, p.content, p.like_count, p.creation_time, p.id_user, p.id_label from post as p left join label as l on l.id_label = p.id_label left join user_follows_label as ufl on ufl.id_label = l.id_label where ufl.id_user = ? order by post.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.id_post, p.content, p.like_count, p.creation_time, p.id_user, p.id_label, p.is_deleted from post as p left join label as l on l.id_label = p.id_label left join user_follows_label as ufl on ufl.id_label = l.id_label where ufl.id_user = ? order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }
 
-        public function getMultiplePostsByFollows(int $offset, int $limit, int $userID) : ?array {
+        public function getPostsByUserSubscribtions(int $offset, int $limit, int $userID) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.id_post, p.content, p.like_count, p.creation_time, p.id_user, p.id_label from post as p left join user_follows_user as afa on afa.id_user_followed = p.id_user where afa.id_user_following = ? order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.id_post, p.content, p.like_count, p.creation_time, p.id_user, p.id_label, p.is_deleted from post as p left join user_follows_user as afa on afa.id_user_followed = p.id_user where afa.id_user_following = ? order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }

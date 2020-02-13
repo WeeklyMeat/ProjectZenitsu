@@ -17,7 +17,13 @@
 
             foreach ($this->posts as $post) {
 
-                echo "<div class = 'post'>". $post['content'] ."</div>";
+                if(!$post["is_deleted"]) {
+
+                    echo "<div class = 'post'>";
+                    echo "<p class='post_paragraph'>". $post["content"] ."</p>";
+                    echo "<a href='Post.php?post=". $post["id_post"] ."'>To the post</a>";
+                    echo "</div>";
+                }
             }
         }    
     }
