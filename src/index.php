@@ -11,29 +11,32 @@
 </head>
 <?php
     require "Autoloader.php";
+    if(!isset($_SESSION))
+        session_start();
 
     $dbc = new DatabaseConnection();
     $postContr = new PostContr(new PostModel($dbc));
     $userContr = new UserContr(new UserModel($dbc));
 
-    $userContr->login("WeeklyMeat", "1234");
+    if(isset($_GET["logout"]) && $_GET["logout"] == true)
+        $userContr->logout();
 ?>
 <body>
     <div class = "sidebar" id = "sidebar_left">
         <nav class="navbar">
-            <ul class="nav-list"><?php if(isset($_SESSION["user"])) {
-                    
+            <ul class="nav-list"><?php
+
+                if(isset($_SESSION["user"]))
                     NavbarView::outputNavOptionsLoggedIn();
-                }
-                else {
-                
+
+                else
                     NavbarView::outputNavOptionsLoggedOut();
-                }?>
+            ?>
             </ul>
         </nav>
     </div>
     <section id = "content">
-<?php       // PHP Section
+<?php       // PHP section
 
             if(isset($_GET["offset"]) && !empty($_GET["offset"]))
                 $offset = intval($_GET["offset"]);

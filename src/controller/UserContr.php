@@ -32,7 +32,9 @@
 
             if($this->authenticate($username, $password)) {
 
-                session_start();
+                if(!isset($_SESSION))
+                    session_start();
+                    
                 session_regenerate_id();
                 $_SESSION["user"] = $username;
                 $_SESSION["id"] = $this->userModel->getUserByUsername($username)[0]["id_user"];
@@ -60,7 +62,9 @@
 
         public function logout() : void {
 
-            session_start();
+            if(!isset($_SESSION))
+                session_start();
+
             session_unset();
             session_destroy();
         }

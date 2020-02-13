@@ -15,38 +15,25 @@
         session_start();
 
     $dbc = new DatabaseConnection();
-    $postContr = new PostContr(new PostModel($dbc));
+    $userContr = new UserContr(new UserModel($dbc));
+
+    if(isset($_SESSION["user"]))
+        header("Location: Index.php?mode=feed");
+
 ?>
 <body>
     <div class = "sidebar" id = "sidebar_left">
         <nav class="navbar">
-            <ul class="nav-list"><?php 
-
-                if(isset($_SESSION["user"]))
-                    NavbarView::outputNavOptionsLoggedIn();
-
-                else 
-                    NavbarView::outputNavOptionsLoggedOut(); 
+            <ul class="nav-list"><?php
+                    
+                NavbarView::outputNavOptionsLoggedOut();
+                $userContr->login("WeeklyMeat", "1234");
             ?>
             </ul>
         </nav>
     </div>
     <section id = "content">
-<?php       // PHP section
 
-            if(isset($_GET["post"]) && $postID = intval($_GET["post"])) {
-
-                $post = $postContr->getPostByID($postID);
-
-                if(empty($post))
-                    header("Location: Index.php");
-
-                $postView = new PostView($post);
-                $postView->outputPosts();
-            }
-            else
-                header("Location: Index.php");
-        ?>
     </section>
     <div class = "sidebar" id = "sidebar_right">
     </div>
