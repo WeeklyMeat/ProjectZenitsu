@@ -62,8 +62,24 @@
 
         public function getMultiplePostsByLabel($offset, $limit, $labelID) {
 
-            if(is_int($offset) && is_int($limit) && $labelID)
+            if(is_int($offset) && is_int($limit) && is_int($labelID))
                 return $this->postModel->getMultiplePostsByLabel($offset, $limit, $labelID);
+
+            return false;
+        }
+
+        public function getMultiplePostsByFeed($offset, $limit, $userID) {
+
+            if(is_int($offset) && is_int($limit) && is_int($userID))
+                return $this->postModel->getMultiplePostsByLabel($offset, $limit, $userID);
+
+            return false;
+        }
+
+        public function getMultiplePostsByFollows($offset, $limit, $userID) {
+
+            if(is_int($offset) && is_int($limit) && is_int($userID))
+                return $this->postModel->getMultiplePostsByFollows($offset, $limit, $userID);
 
             return false;
         }

@@ -53,4 +53,18 @@
             $stmt->execute(array($labelID, $offset, $limit));
             return $stmt->fetchAll();
         }
+
+        public function getMultiplePostsByFeed(int $offset, int $limit, int $userID) : ?array {
+
+            $stmt = $this->dbc->prepare('select p.id_post, p.content, p.like_count, p.creation_time, p.id_user, p.id_label from post as p left join label as l on l.id_label = p.id_label left join user_follows_label as ufl on ufl.id_label = l.id_label where ufl.id_user = ? order by post.creation_time desc limit ?, ?');
+            $stmt->execute(array($userID, $offset, $limit));
+            return $stmt->fetchAll();
+        }
+
+        public function getMultiplePostsByFollows(int $offset, int $limit, int $userID) : ?array {
+
+            $stmt = $this->dbc->prepare('select p.id_post, p.content, p.like_count, p.creation_time, p.id_user, p.id_label from post as p left join user_follows_user as afa on afa.id_user_followed = p.id_user where afa.id_user_following = ? order by p.creation_time desc limit ?, ?');
+            $stmt->execute(array($userID, $offset, $limit));
+            return $stmt->fetchAll();
+        }
     }

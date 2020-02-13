@@ -14,10 +14,10 @@
 
         // Member Functions
         public function outputPosts() {
-            
+
             foreach ($this->posts as $post) {
 
                 echo "<div class = 'post'>". $post['content'] ."</div>";
             }
-        }
+        }    
     }

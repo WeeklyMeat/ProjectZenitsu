@@ -35,7 +35,7 @@
                 session_start();
                 session_regenerate_id();
                 $_SESSION["user"] = $username;
-                $_SESSION["id"] = $this->userModel->getUserByUsername($username)['id_user'];
+                $_SESSION["id"] = $this->userModel->getUserByUsername($username)[0]["id_user"];
                 session_write_close();
                 return true;
             }
@@ -55,7 +55,7 @@
             }
 
             $user = $this->userModel->getUserByUsername($username);
-            return password_verify($password, $user['password']);
+            return password_verify($password, $user[0]['password']);
         }
 
         public function logout() : void {
