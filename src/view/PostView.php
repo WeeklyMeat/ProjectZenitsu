@@ -19,10 +19,10 @@
 
                 if(!$post["is_deleted"]) {
 
-                    echo "<div class = 'post'>";
-                    echo "<p class='post_paragraph'>". $post["content"] ."</p>";
-                    echo "<a href='Post.php?post=". $post["id_post"] ."'>To the post</a>";
-                    echo "</div>";
+                    echo "\t\t<article class = 'post'>\n";
+                    echo "\t\t\t<p class='post_paragraph'>". $post["content"] ."</p>\n";
+                    echo "\t\t\t<a class='link' href='Post.php?post=". $post["id_post"] ."'>To the post</a>\n";
+                    echo "\t\t</article>\n";
                 }
             }
         }    

@@ -11,6 +11,7 @@
 </head>
 <?php
     require "Autoloader.php";
+    session_start();
 
     $dbc = new DatabaseConnection();
     $postContr = new PostContr(new PostModel($dbc));
@@ -18,11 +19,18 @@
 <body>
     <div class = "sidebar" id = "sidebar_left">
         <nav class="navbar">
-            <ul class="nav-list">
-                <a href="Index.php?mode=feed" class="nav-link"><li class="nav-item">Home</li></a>
-                <a href="Index.php" class="nav-link"><li class="nav-item">Discover</li></a>
-                <a href="Index.php?mode=follow" class="nav-link"><li class="nav-item">Followed</li></a>
-            </ul>
+            <ul class="nav-list"><?php if(isset($_SESSION["user"])) {
+                echo "<a href='Index.php?mode=feed' class='nav-link'><li class='nav-item'>Home</li></a>";
+                echo "<a href='Index.php' class='nav-link'><li class='nav-item'>Discover</li></a>";
+                echo "<a href='Index.php?mode=follow' class='nav-link'><li class='nav-item'>Followed</li></a>";
+                echo "<hr>";
+                echo "<a href='Index.php' class='nav-link'><li class='nav-item'>Logout</li></a>";
+                }
+                else {
+                echo "<a href='Index.php' class='nav-link'><li class='nav-item'>Login</li></a>";
+                echo "<a href='Index.php?mode=follow' class='nav-link'><li class='nav-item'>Register</li></a>";
+                }
+            ?></ul>
         </nav>
     </div>
     <section id = "content">
@@ -34,7 +42,7 @@
 
                 if(empty($post))
                     header("Location: Index.php");
-                    
+
                 $postView = new PostView($post);
                 $postView->outputPosts();
             }
