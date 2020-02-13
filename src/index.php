@@ -22,17 +22,14 @@
     <div class = "sidebar" id = "sidebar_left">
         <nav class="navbar">
             <ul class="nav-list"><?php if(isset($_SESSION["user"])) {
-                echo "<a href='Index.php?mode=feed' class='nav-link'><li class='nav-item'>Home</li></a>";
-                echo "<a href='Index.php' class='nav-link'><li class='nav-item'>Discover</li></a>";
-                echo "<a href='Index.php?mode=follow' class='nav-link'><li class='nav-item'>Followed</li></a>";
-                echo "<hr>";
-                echo "<a href='Index.php' class='nav-link'><li class='nav-item'>Logout</li></a>";
+                    
+                    NavbarView::outputNavOptionsLoggedIn();
                 }
                 else {
-                echo "<a href='Index.php' class='nav-link'><li class='nav-item'>Login</li></a>";
-                echo "<a href='Index.php?mode=follow' class='nav-link'><li class='nav-item'>Register</li></a>";
-                }
-            ?></ul>
+                
+                    NavbarView::outputNavOptionsLoggedOut();
+                }?>
+            </ul>
         </nav>
     </div>
     <section id = "content">
@@ -61,6 +58,7 @@
             $postView->outputPosts();
 ?>
     </section>
-    <div class = "sidebar" id = "sidebar_right"></div>
+    <div class = "sidebar" id = "sidebar_right">
+    </div>
 </body>
 </html>
