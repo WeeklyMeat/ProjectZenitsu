@@ -20,6 +20,7 @@
                 if(!$post["is_deleted"]) {
 
                     echo "\t\t<article class = 'post'>\n";
+                    echo "\t\t\t<a class='link' href='User.php?user=". $post["id_user"] ."'>". $post["username"] ."</a>\n";
                     echo "\t\t\t<p class='post_paragraph'>". $post["content"] ."</p>\n";
                     echo "\t\t\t<a class='link' href='Post.php?post=". $post["id_post"] ."'>To the post</a>\n";
                     echo "\t\t</article>\n";

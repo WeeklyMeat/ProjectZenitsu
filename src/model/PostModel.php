@@ -28,14 +28,14 @@
 
         public function getPostByID(int $postID) : ?array {
 
-            $stmt = $this->dbc->prepare('select * from post where id_post = ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username from post as p left join user as u on u.id_user = p.id_user where p.id_post = ?');
             $stmt->execute(array($postID));
             return $stmt->fetchAll();
         }
 
         public function getNewestPosts(int $offset, int $limit) : ?array {
 
-            $stmt = $this->dbc->prepare('select * from post where is_deleted = 0 order by creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username from post as p left join user as u on u.id_user = p.id_user where is_deleted = 0 order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($offset, $limit));
             return $stmt->fetchAll();
         }
