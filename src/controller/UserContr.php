@@ -56,8 +56,8 @@
                 return false;
             }
 
-            $user = $this->userModel->getUserByUsername($username);
-            return password_verify($password, $user[0]['password']);
+            $user = $this->userModel->getUserByUsername($username)[0];
+            return password_verify($password, $user['password']);
         }
 
         public function logout() : void {
@@ -69,12 +69,12 @@
             session_destroy();
         }
 
-        protected function getUserByUsername($username) {
+        public function getUserByUsername($username) {
 
             $username = trim(htmlspecialchars($username));
 
             if(!empty($username))
-                return $this->userModel->getUserByUsername();
+                return $this->userModel->getUserByUsername($username);
 
             return false;
         }

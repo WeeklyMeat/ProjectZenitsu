@@ -18,6 +18,7 @@
             echo "\t\t\t\t<a href='Index.php' class='link'><li class='nav-item'>Discover</li></a>\n";
             echo "\t\t\t\t<a href='Index.php?mode=follow' class='link'><li class='nav-item'>Followed</li></a>\n";
             echo "\t\t\t\t<hr>\n";
+            echo "\t\t\t\t<a href='User.php?user=". $_SESSION["user"] ."' class='link'><li class='nav-item'>Profile</li></a>\n";
             echo "\t\t\t\t<a href='Index.php?logout=true' class='link'><li class='nav-item'>Logout</li></a>\n";
             return;
         }

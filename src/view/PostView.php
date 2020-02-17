@@ -19,10 +19,15 @@
 
                 if(!$post["is_deleted"]) {
 
-                    echo "\t\t<article class = 'post'>\n";
-                    echo "\t\t\t<a class='link' href='User.php?user=". $post["id_user"] ."'>". $post["username"] ."</a>\n";
-                    echo "\t\t\t<p class='post_paragraph'>". $post["content"] ."</p>\n";
-                    echo "\t\t\t<a class='link' href='Post.php?post=". $post["id_post"] ."'>To the post</a>\n";
+                    $location = "..\\images\\profile\\STANDART_IMAGE.png";
+                    if (!empty($post["avatar_location"]) && file_exists("..\\images\\profile\\". $post["avatar_location"] .".jpg"))
+                        $location = "..\\images\\profile\\". $post["avatar_location"] .".jpg";
+
+                    echo "\t\t<article class='post'>\n";
+                    echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture'>\n";
+                    echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'>". $post["username"] ."</a>\n";
+                    echo "\t\t\t<p class='postParagraph'>". $post["content"] ."</p>\n";
+                    echo "\t\t\t<a href='Post.php?post=". $post["id_post"] ."'><img src='..\\images\\icons\\expand.png' alt='expand' class='expand'></a>\n";
                     echo "\t\t</article>\n";
                 }
             }

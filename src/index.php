@@ -6,7 +6,7 @@
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
     <link rel="stylesheet" type="text/css" href="style/Main.css">
-    <!-- <link rel="stylesheet" type="text/css" href="style/darkmode.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="style/Darkmode.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <?php
