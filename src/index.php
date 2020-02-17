@@ -43,6 +43,9 @@
 
             if(isset($_GET["mode"]) && !empty($mode = trim(htmlspecialchars($_GET["mode"])))) {
 
+                if($mode === "label" && isset($_GET["label"]) && !empty($label = trim(htmlspecialchars($_GET["label"]))))
+                    $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $label);
+
                 if(isset($_SESSION["id"])) {
 
                     if($mode === "feed")
@@ -51,14 +54,9 @@
                     if($mode === "follow")
                         $posts = $postContr->getPostsByUserSubscribtions($offset ?? 0, 20, $_SESSION["id"]);
                 }
-
-                if($mode === "label" && isset($_GET["label"]) && !empty($label = trim(htmlspecialchars($_GET["label"]))))
-                    $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $label);
             }
-            else
-                $posts = $postContr->getNewestPosts($offset ?? 0, 20);
 
-            $postView = new PostView($posts);
+            $postView = new PostView($posts ?? $postContr->getNewestPosts($offset ?? 0, 20));
             $postView->outputPosts();
 ?>
     </section>
