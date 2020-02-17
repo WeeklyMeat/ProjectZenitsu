@@ -20,8 +20,8 @@
 
             echo "\t\t<section class='userProfile'>\n";
             echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture userPicture'>\n";
-            echo "\t\t\t <p class='userTitle'>". $this->user["username"] ."</p>\n";
-            echo "\t\t\t <p class='userParagraph'>". $this->user["biography"] ."</p>\n";
+            echo "\t\t\t<p class='userTitle'>". $this->user["username"] ."</p>\n";
+            echo "\t\t\t<p class='userParagraph'>". $this->user["biography"] ."</p>\n";
             echo "\t\t</section>\n";
         }
     }

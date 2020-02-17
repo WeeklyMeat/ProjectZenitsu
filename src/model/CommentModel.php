@@ -33,9 +33,9 @@
             return $stmt->fetchAll();
         }
 
-        public function getMultipleCommentsByPost(int $postID) : ?array {
+        public function getCommentsByPost(int $postID) : ?array {
 
-            $stmt = $this->dbc->prepare('select c.id_comment, c.content, c.like_count, c.creation_time, c.id_user, c.id_post from comment as c left join post as p on p.id_post = c.id_post where p.id_post = ?');
+            $stmt = $this->dbc->prepare('select c.*, u.username, u.avatar_location from comment as c left join post as p on p.id_post = c.id_post left join user as u on u.id_user = c.id_user where p.id_post = ? order by c.creation_time desc');
             $stmt->execute(array($postID));
             return $stmt->fetchAll();
         }

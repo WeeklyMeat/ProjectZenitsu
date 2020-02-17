@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Project Zenitsu</title>
+    <title>User</title>
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
     <link rel="stylesheet" type="text/css" href="style/Main.css">

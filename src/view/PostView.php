@@ -37,5 +37,30 @@
                     echo "\t\t</article>\n";
                 }
             }
-        }  
+        }
+        
+        public function outputSinglPost() {
+
+            $location = "..\\images\\profile\\STANDART_IMAGE.png";
+            if (!empty($this->posts[0]["avatar_location"]) && file_exists("..\\images\\profile\\". $this->posts[0]["avatar_location"] .".jpg"))
+                $location = "..\\images\\profile\\". $this->posts[0]["avatar_location"] .".jpg";
+
+            echo "\t\t<section class='userProfile'>\n";
+            echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture userPicture'>\n";
+            echo "\t\t\t<p class='userTitle'>". $this->posts[0]["username"] ."</p>\n";
+            echo "\t\t</section>\n";
+        }
+
+        public function outputSinglePost() {
+
+            $location = "..\\images\\profile\\STANDART_IMAGE.png";
+            if (!empty($this->posts[0]["avatar_location"]) && file_exists("..\\images\\profile\\". $this->posts[0]["avatar_location"] .".jpg"))
+                $location = "..\\images\\profile\\". $this->posts[0]["avatar_location"] .".jpg";
+
+            echo "\t\t<section class='userProfile'>\n";
+            echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture userPicture'>\n";
+            echo "\t\t\t<p class='userTitle'>". $this->posts[0]["username"] ."</p>\n";
+            echo "\t\t\t<p class='userParagraph'>". $this->posts[0]["content"] ."</p>\n";
+            echo "\t\t</section>\n";
+        }
     }

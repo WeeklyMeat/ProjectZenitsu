@@ -21,6 +21,7 @@ create table label(
 
     id_label int not null auto_increment primary key,
     name varchar(127) not null unique,
+    is_deleted tinyint(1) not null default 0,
     follower_count int default 0
 );
 

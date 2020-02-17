@@ -36,11 +36,11 @@
             return false;
         }
 
-        public function getMultipleCommentsByPost($postID) : ?array {
+        public function getCommentsByPost($postID) : ?array {
 
             if(is_int($postID)) {
 
-                return $this->commentModel->getMultipleCommentsByPost($postID);
+                return $this->commentModel->getCommentsByPost($postID);
             }
 
             return false;
