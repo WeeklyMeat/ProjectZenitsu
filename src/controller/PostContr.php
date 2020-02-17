@@ -60,10 +60,10 @@
             return false;
         }
 
-        public function getPostsByLabel($offset, $limit, $labelID) {
+        public function getPostsByLabel($offset, $limit, $label) {
 
-            if(is_int($offset) && is_int($limit) && is_int($labelID))
-                return $this->postModel->getPostsByLabel($offset, $limit, $labelID);
+            if(is_int($offset) && is_int($limit) && $label = trim(htmlspecialchars($label)))
+                return $this->postModel->getPostsByLabel($offset, $limit, $label);
 
             return false;
         }

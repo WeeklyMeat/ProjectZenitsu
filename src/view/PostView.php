@@ -25,10 +25,10 @@
 
                     echo "\t\t<article class='post'>\n";
                     echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture'>\n";
-                    echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'>". $post["username"] ."</a>";
+                    echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'><b>". $post["username"] ."</b></a>";
 
                     if(isset($post["name"]))
-                        echo " in <a class='link' href='Index.php?label=". $post["name"] ."'>". $post["name"] ."</a>\n";
+                        echo " in <a class='link' href='Index.php?mode=label&label=". $post["name"] ."'><b>". $post["name"] ."</b></a>\n";
                     else
                         "\n";
 

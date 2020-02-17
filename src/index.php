@@ -50,6 +50,10 @@
 
                     if($mode === "follow")
                         $posts = $postContr->getPostsByUserSubscribtions($offset ?? 0, 20, $_SESSION["id"]);
+
+                    if($mode === "label" && isset($_GET["label"]) && !empty($label = trim(htmlspecialchars($_GET["label"]))))
+                        $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $label);
+
                 }
                 else
                     $posts = $postContr->getNewestPosts($offset ?? 0, 20);
