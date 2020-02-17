@@ -41,22 +41,19 @@
             if(isset($_GET["offset"]) && !empty($_GET["offset"]))
                 $offset = intval($_GET["offset"]);
 
-            if(isset($_SESSION["id"])) {
+            if(isset($_GET["mode"]) && !empty($mode = trim(htmlspecialchars($_GET["mode"])))) {
 
-                if(isset($_GET["mode"]) && !empty($mode = trim(htmlspecialchars($_GET["mode"])))) {
+                if(isset($_SESSION["id"])) {
 
                     if($mode === "feed")
                         $posts = $postContr->getPostsByLabelSubscriptions($offset ?? 0, 20, $_SESSION["id"]);
 
                     if($mode === "follow")
                         $posts = $postContr->getPostsByUserSubscribtions($offset ?? 0, 20, $_SESSION["id"]);
-
-                    if($mode === "label" && isset($_GET["label"]) && !empty($label = trim(htmlspecialchars($_GET["label"]))))
-                        $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $label);
-
                 }
-                else
-                    $posts = $postContr->getNewestPosts($offset ?? 0, 20);
+
+                if($mode === "label" && isset($_GET["label"]) && !empty($label = trim(htmlspecialchars($_GET["label"]))))
+                    $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $label);
             }
             else
                 $posts = $postContr->getNewestPosts($offset ?? 0, 20);
