@@ -9,8 +9,10 @@
 
 .userPicture {
 
-    width: 20%;
+    width: 12vh;
+    height: 12vh;
     min-width: 60px;
+    min-height: 60px;
 }
 
 .userParagraph {
