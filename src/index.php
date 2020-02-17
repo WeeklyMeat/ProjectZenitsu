@@ -17,6 +17,7 @@
     $dbc = new DatabaseConnection();
     $postContr = new PostContr(new PostModel($dbc));
     $userContr = new UserContr(new UserModel($dbc));
+    $labelContr = new LabelContr(new LabelModel($dbc));
 
     if(isset($_GET["logout"]) && $_GET["logout"] == true)
         $userContr->logout();
@@ -60,7 +61,15 @@
             $postView->outputPosts();
 ?>
     </section>
-    <div class = "sidebar" id = "sidebar_right">
+    <div class = "sidebar" id = "sidebar_right"><?php
+
+        if(isset($_SESSION["user"])) {
+
+            $labelView = new LabelView($labelContr->getLabelsByUserSubscriptions($_SESSION["id"]));
+            $labelView->outputLabelsLoggedIn();
+        }
+            
+    ?>
     </div>
 </body>
 </html>

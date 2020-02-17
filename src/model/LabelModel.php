@@ -20,15 +20,16 @@
             return $stmt->execute(array($name));
         }
 
-        public function unsetComment(int $labelID) : bool {
+        public function unsetLabel(int $labelID) : bool {
 
             $stmt = $this->dbc->prepare('update label set is_deleted = 1 where id_label = ?');
             return $stmt->execute(array($labelID));
         }
 
-        public function getLabelsByUserSubscriptions($userID) : ?array {
+        public function getLabelsByUserSubscriptions(int $userID) : ?array {
 
-            $stmt = $this->dbc->prepare('select l.* from label as l left join user_follows_label as ufl on ufl.id_label = l.id_label where ufl = ? order by l.name');
-            return $stmt->execute(array($userID));
+            $stmt = $this->dbc->prepare('select l.* from label as l left join user_follows_label as ufl on ufl.id_label = l.id_label where ufl.id_user = ? order by l.name');
+            $stmt->execute(array($userID));
+            return $stmt->fetchAll();
         }
     }

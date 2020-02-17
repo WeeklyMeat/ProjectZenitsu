@@ -1,15 +1,29 @@
 <?php
 
-    class LabelView { // todo
+    class LabelView {
 
-        public static function outputNavOptionsLoggedIn () : void {
+        // Member Variables
+        protected $labels;
 
-            echo "\n\t\t\t\t<a href='Index.php?mode=feed' class='link'><li class='nav-item'>Home</li></a>\n";
-            echo "\t\t\t\t<a href='Index.php' class='link'><li class='nav-item'>Discover</li></a>\n";
-            echo "\t\t\t\t<a href='Index.php?mode=follow' class='link'><li class='nav-item'>Followed</li></a>\n";
-            echo "\t\t\t\t<hr>\n";
-            echo "\t\t\t\t<a href='User.php?user=". $_SESSION["user"] ."' class='link'><li class='nav-item'>Profile</li></a>\n";
-            echo "\t\t\t\t<a href='Index.php?logout=true' class='link'><li class='nav-item'>Logout</li></a>\n";
+        // Constructor
+        public function __construct($labels) {
+
+            $this->labels = $labels;
+        }
+
+        // Member Functions
+        public function outputLabelsLoggedIn () : void {
+
+            echo "\n\t\t<nav class='navbar'>\n";
+            echo "\t\t\t<ul class='nav-list'>\n";
+            
+            foreach($this->labels as $label) {
+
+                echo "\t\t\t\t<a href='Index.php?mode=label&label=". $label["name"] ."' class='link'><li class='nav-item'>". $label["name"] ."</li></a>\n";
+            }
+
+            echo "\t\t\t<ul>\n";
+            echo "\t\t<nav>\n";
             return;
         }
     }

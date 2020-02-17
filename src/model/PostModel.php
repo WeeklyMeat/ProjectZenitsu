@@ -35,7 +35,7 @@
 
         public function getNewestPosts(int $offset, int $limit) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.name from post as p left join user as u on u.id_user = p.id_user left join label as l on p.id_label = l.id_label where is_deleted = 0 order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.name from post as p left join user as u on u.id_user = p.id_user left join label as l on p.id_label = l.id_label where p.is_deleted = 0 order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($offset, $limit));
             return $stmt->fetchAll();
         }
@@ -49,7 +49,7 @@
 
         public function getPostsByLabel(int $offset, int $limit, string $label) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join user as u on u.id_user = p.id_user left join label as l on l.id_label = p.id_label where l.name = ? and is_deleted = 0 order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join user as u on u.id_user = p.id_user left join label as l on l.id_label = p.id_label where l.name = ? and p.is_deleted = 0 order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($label, $offset, $limit));
             return $stmt->fetchAll();
         }
