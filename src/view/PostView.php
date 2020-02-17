@@ -25,11 +25,17 @@
 
                     echo "\t\t<article class='post'>\n";
                     echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture'>\n";
-                    echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'>". $post["username"] ."</a>\n";
+                    echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'>". $post["username"] ."</a>";
+
+                    if(isset($post["name"]))
+                        echo " in <a class='link' href='Index.php?label=". $post["name"] ."'>". $post["name"] ."</a>\n";
+                    else
+                        "\n";
+
                     echo "\t\t\t<p class='postParagraph'>". $post["content"] ."</p>\n";
                     echo "\t\t\t<a href='Post.php?post=". $post["id_post"] ."'><img src='..\\images\\icons\\expand.png' alt='expand' class='expand'></a>\n";
                     echo "\t\t</article>\n";
                 }
             }
-        }    
+        }  
     }

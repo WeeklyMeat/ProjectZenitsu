@@ -28,21 +28,21 @@
 
         public function getPostByID(int $postID) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join user as u on u.id_user = p.id_user where p.id_post = ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.name from post as p left join user as u on u.id_user = p.id_user left join label as l on p.id_label = l.id_label where p.id_post = ?');
             $stmt->execute(array($postID));
             return $stmt->fetchAll();
         }
 
         public function getNewestPosts(int $offset, int $limit) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join user as u on u.id_user = p.id_user where is_deleted = 0 order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.name from post as p left join user as u on u.id_user = p.id_user left join label as l on p.id_label = l.id_label where is_deleted = 0 order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($offset, $limit));
             return $stmt->fetchAll();
         }
 
         public function getPostsByUser(int $offset, int $limit, int $userID) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join user as u on u.id_user = p.id_user where p.id_user = ? and is_deleted = 0 order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.label from post as p left join user as u on u.id_user = p.id_user left join label as l on p.id_label = l.id_label where p.id_user = ? and is_deleted = 0 order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }
@@ -56,14 +56,14 @@
 
         public function getPostsByLabelSubscriptions(int $offset, int $limit, int $userID) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join label as l on l.id_label = p.id_label left join user_follows_label as ufl on ufl.id_label = l.id_label left join user as u on u.id_user = ufl.id_user where ufl.id_user = ? order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.name from post as p left join label as l on l.id_label = p.id_label left join user_follows_label as ufl on ufl.id_label = l.id_label left join user as u on u.id_user = ufl.id_user where ufl.id_user = ? order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }
 
         public function getPostsByUserSubscribtions(int $offset, int $limit, int $userID) : ?array {
 
-            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location from post as p left join user_follows_user as ufu on ufu.id_user_followed = p.id_user left join user as u on u.id_user = p.id_user where ufu.id_user_following = ? order by p.creation_time desc limit ?, ?');
+            $stmt = $this->dbc->prepare('select p.*, u.username, u.avatar_location, l.name from post as p left join user_follows_user as ufu on ufu.id_user_followed = p.id_user left join user as u on u.id_user = p.id_user left join label as on p.id_label = l.id_label where ufu.id_user_following = ? order by p.creation_time desc limit ?, ?');
             $stmt->execute(array($userID, $offset, $limit));
             return $stmt->fetchAll();
         }
