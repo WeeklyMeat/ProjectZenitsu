@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>User</title>
+    <title><?php echo "Label '". $_GET["label"] ."'"; ?></title>
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
     <meta name="keywords" content="Social, Media, Network, Friends, Opinions">
