@@ -23,8 +23,8 @@
                     if (!empty($post["avatar_location"]) && file_exists("..\\images\\profile\\". $post["avatar_location"] .".jpg"))
                         $location = "..\\images\\profile\\". $post["avatar_location"] .".jpg";
 
-                    echo "\t\t<article class='post'>\n";
-                    echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='profilePicture'>\n";
+                    echo "\t\t<article class='content_post'>\n";
+                    echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='content_post_avatar'>\n";
                     echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'><b>". $post["username"] ."</b></a>";
 
                     if(isset($post["name"]))
@@ -32,8 +32,8 @@
                     else
                         "\n";
 
-                    echo "\t\t\t<p class='postParagraph'>". $post["content"] ."</p>\n";
-                    echo "\t\t\t<a href='Post.php?post=". $post["id_post"] ."'><img src='..\\images\\icons\\expand.png' alt='expand' class='expand'></a>\n";
+                    echo "\t\t\t<p class='content_post_paragraph'>". $post["content"] ."</p>\n";
+                    echo "\t\t\t<a href='Post.php?post=". $post["id_post"] ."'><img src='..\\images\\icons\\expand.png' alt='expand' class='content_post_expand'></a>\n";
                     echo "\t\t</article>\n";
                 }
             }

@@ -1,0 +1,53 @@
+.content_post {
+
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-left: 3%;
+    float: left;
+
+    width: 86%;
+    padding: 4%;
+    min-height: 10vh;
+
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+
+    transition: 0.3s;
+}
+
+.content_post:hover {
+
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px var(--accent-color);
+}
+
+.content_post_avatar {
+
+    height: 6vh;
+    min-height: 30px;
+    width: 6vh;
+    min-width:30px;
+
+    border-radius: 50%;
+    float: left;
+}
+
+.content_post_title {
+
+    margin-left: 3%;
+}
+
+.content_post_paragraph {
+
+    margin: 0;
+    margin-top: 9%;
+}
+
+.content_post_expand {
+
+    width: 3%;
+    min-width: 15px;
+    float: right;
+}

@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Project Zenitsu</title>
-    <meta name="description" content="bla">
+    <meta name="description" content="Main site">
     <meta name="author" content="WeeklyMeat">
-    <link rel="stylesheet" type="text/css" href="style/Main.css">
-    <!-- <link rel="stylesheet" type="text/css" href="style/Darkmode.css"> -->
+    <meta name="keywords" content="Social, Media, Network, Friends, Opinions">
+    <link rel="stylesheet" type="text/css" href="style/lightmode.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/content.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <?php
@@ -24,8 +26,8 @@
 ?>
 <body>
     <div class = "sidebar" id = "sidebar_left">
-        <nav class="navbar">
-            <ul class="nav-list"><?php
+        <nav class="nav">
+            <ul class="nav_list"><?php
 
                 if(isset($_SESSION["user"]))
                     NavbarView::outputNavOptionsLoggedIn();

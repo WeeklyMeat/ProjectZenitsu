@@ -1,32 +1,6 @@
-html, body {
+:root {
 
-    background-color: rgb(27, 27, 27);
-    color: lightgrey;
-}
-
-.link {
-
-    color: lightgrey;
-}
-
-.sidebar {
-
-    box-shadow: 0px 0px 15px rgb(37, 37, 37);
-}
-
-.navbar {
-
-    border-top: 1px solid rgb(70, 70, 70);
-    border-bottom: 1px solid rgb(70, 70, 70);
-}
-
-.post {
-
-    border-top: 1px solid rgb(70, 70, 70);
-    border-bottom: 1px solid rgb(70, 70, 70);
-}
-
-.post:hover {
-
-    box-shadow: 0px 0px 10px rgb(37, 37, 37);
+    --main-color: rgb(27, 27, 27);
+    --accent-color: rgb(12, 12, 12);
+    --text-color: rgb(194, 194, 194);
 }
