@@ -14,6 +14,7 @@ create table user(
     creation_time timestamp default current_timestamp,
     avatar_location varchar(127),
     biography varchar(255),
+    is_deleted tinyint(1) not null default 0,
     role char not null default 'u'
 );
 
@@ -21,6 +22,8 @@ create table label(
 
     id_label int not null auto_increment primary key,
     name varchar(127) not null unique,
+    creation_time timestamp default current_timestamp,
+    avatar_location varchar(127),
     is_deleted tinyint(1) not null default 0,
     follower_count int default 0
 );
