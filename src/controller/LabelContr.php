@@ -30,7 +30,16 @@
             return false;
         }
 
-        public function getLabelsByUserSubscriptions($userID) : ?array {
+        public function getLabelByName($name) {
+
+            $name = trim(htmlspecialchars($name));
+            if(!empty($name))
+                return $this->labelModel->getLabelByName($name);
+
+            return false;
+        }
+
+        public function getLabelsByUserSubscriptions($userID) {
 
             if(is_int($userID))
                 return $this->labelModel->getLabelsByUserSubscriptions($userID);

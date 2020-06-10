@@ -18,7 +18,7 @@
         session_start();
 
     $dbc = new DatabaseConnection();
-    $userContr = new UserContr(new UserModel($dbc));
+    $labelContr = new LabelContr(new LabelModel($dbc));
     $postContr = new PostContr(new PostModel($dbc));
 ?>
 <body>
@@ -38,20 +38,20 @@
     <section id="content">
 <?php       // PHP section
 
-            if(isset($_GET["user"]) && $username = trim(htmlspecialchars($_GET["user"]))) {
+            if(isset($_GET["label"]) && $name = trim(htmlspecialchars($_GET["label"]))) {
 
-                $user = $userContr->getUserByUsername($username)[0];
+                $label = $labelContr->getLabelByName($name)[0];
 
-                if(empty($user))
+                if(empty($label))
                     header("Location: Index.php");
 
-                $panelView = new PanelView($user);
+                $panelView = new PanelView($label);
                 $panelView->outputPanel();
 
                 if(isset($_GET["offset"]) && !empty($_GET["offset"]))
-                $offset = intval($_GET["offset"]);
+                    $offset = intval($_GET["offset"]);
 
-                $posts = $postContr->getPostsByUser($offset ?? 0, 20, $user["id_user"]);
+                $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $name);
 
                 $postView = new PostView($posts);
                 $postView->outputPosts();

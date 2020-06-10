@@ -26,6 +26,13 @@
             return $stmt->execute(array($labelID));
         }
 
+        public function getLabelByName(string $name) : ?array {
+
+            $stmt = $this->dbc->prepare('select * from label where name = ?');
+            $stmt->execute(array($name));
+            return $stmt->fetchAll();
+        }
+
         public function getLabelsByUserSubscriptions(int $userID) : ?array {
 
             $stmt = $this->dbc->prepare('select l.* from label as l left join user_follows_label as ufl on ufl.id_label = l.id_label where ufl.id_user = ? order by l.name');

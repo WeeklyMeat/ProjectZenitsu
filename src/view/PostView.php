@@ -29,7 +29,7 @@
                     echo "\t\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'><b>". $post["username"] ."</b></a>";
 
                     if(isset($post["name"]))
-                        echo " in <a class='link' href='Index.php?mode=label&label=". $post["name"] ."'><b>". $post["name"] ."</b></a>\n";
+                        echo " in <a class='link' href='label.php?label=". $post["name"] ."'><b>". $post["name"] ."</b></a>\n";
                     else
                         "\n";
 

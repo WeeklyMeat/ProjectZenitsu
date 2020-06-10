@@ -45,10 +45,6 @@
                 $offset = intval($_GET["offset"]);
 
             if(isset($_GET["mode"]) && !empty($mode = trim(htmlspecialchars($_GET["mode"])))) {
-
-                if($mode === "label" && isset($_GET["label"]) && !empty($label = trim(htmlspecialchars($_GET["label"]))))
-                    $posts = $postContr->getPostsByLabel($offset ?? 0, 20, $label);
-
                 if(isset($_SESSION["id"])) {
 
                     if($mode === "feed")
