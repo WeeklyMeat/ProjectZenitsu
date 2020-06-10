@@ -6,7 +6,7 @@
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
     <meta name="keywords" content="Social, Media, Network, Friends, Opinions">
-    <link rel="stylesheet" type="text/css" href="style/darkmode.css">
+    <link rel="stylesheet" type="text/css" href="style/lightmode.css">
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="stylesheet" type="text/css" href="style/panel.css">
     <link rel="stylesheet" type="text/css" href="style/content.css">

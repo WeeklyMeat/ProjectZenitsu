@@ -59,15 +59,7 @@
             $postView->outputPosts();
 ?>
     </section>
-    <div class = "sidebar" id = "sidebar_right"><?php
-
-        if(isset($_SESSION["user"])) {
-
-            $labelView = new LabelView($labelContr->getLabelsByUserSubscriptions($_SESSION["id"]));
-            $labelView->outputLabelsLoggedIn();
-        }
-            
-    ?>
+    <div class = "sidebar" id = "sidebar_right">
     </div>
 </body>
 </html>
