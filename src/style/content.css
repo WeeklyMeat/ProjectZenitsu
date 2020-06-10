@@ -6,8 +6,8 @@
     float: left;
 
     width: 86%;
-    padding: 4%;
-    min-height: 10vh;
+    padding: 3%;
+    min-height: 5vh;
 
     border-top: 1px solid var(--accent-color);
     border-bottom: 1px solid var(--accent-color);
@@ -25,9 +25,9 @@
 
 .content_post_avatar {
 
-    height: 6vh;
+    height: 2vw;
     min-height: 30px;
-    width: 6vh;
+    width: 2vw;
     min-width:30px;
 
     border-radius: 50%;
@@ -36,13 +36,19 @@
 
 .content_post_title {
 
-    margin-left: 3%;
+    float: left;
+    height: 2vw;
+    width: 26.96vw;
+    margin-left: 0.5vw;
+    overflow: hidden;
 }
 
 .content_post_paragraph {
 
+    float: left;
     margin: 0;
-    margin-top: 9%;
+    margin-top: 1%;
+    width: 100%;
 }
 
 .content_post_expand {
@@ -50,4 +56,5 @@
     width: 3%;
     min-width: 15px;
     float: right;
+    bottom: 0;
 }

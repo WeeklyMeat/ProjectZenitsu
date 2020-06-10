@@ -25,13 +25,15 @@
 
                     echo "\t\t<article class='content_post'>\n";
                     echo "\t\t\t<img src='". $location ."' alt='Profile Picture' class='content_post_avatar'>\n";
-                    echo "\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'><b>". $post["username"] ."</b></a>";
+                    echo "\t\t\t<div class='content_post_title'>";
+                    echo "\t\t\t\t<a class='link title' href='User.php?user=". $post["username"] ."'><b>". $post["username"] ."</b></a>";
 
                     if(isset($post["name"]))
                         echo " in <a class='link' href='Index.php?mode=label&label=". $post["name"] ."'><b>". $post["name"] ."</b></a>\n";
                     else
                         "\n";
 
+                    echo "</div>";
                     echo "\t\t\t<p class='content_post_paragraph'>". $post["content"] ."</p>\n";
                     echo "\t\t\t<a href='Post.php?post=". $post["id_post"] ."'><img src='..\\images\\icons\\expand.png' alt='expand' class='content_post_expand'></a>\n";
                     echo "\t\t</article>\n";

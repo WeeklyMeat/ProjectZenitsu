@@ -13,7 +13,7 @@ create table user(
     password varchar(255),
     creation_time timestamp default current_timestamp,
     avatar_location varchar(127),
-    biography varchar(255),
+    description varchar(255),
     is_deleted tinyint(1) not null default 0,
     role char not null default 'u'
 );
@@ -24,6 +24,7 @@ create table label(
     name varchar(127) not null unique,
     creation_time timestamp default current_timestamp,
     avatar_location varchar(127),
+    description varchar(255),
     is_deleted tinyint(1) not null default 0,
     follower_count int default 0
 );

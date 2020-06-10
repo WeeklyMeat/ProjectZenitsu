@@ -5,9 +5,11 @@
     <title>User</title>
     <meta name="description" content="bla">
     <meta name="author" content="WeeklyMeat">
-    <link rel="stylesheet" type="text/css" href="style/Main.css">
-    <link rel="stylesheet" type="text/css" href="style/Profile.css">
-    <!-- <link rel="stylesheet" type="text/css" href="style/darkmode.css"> -->
+    <meta name="keywords" content="Social, Media, Network, Friends, Opinions">
+    <link rel="stylesheet" type="text/css" href="style/darkmode.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/profile.css">
+    <link rel="stylesheet" type="text/css" href="style/content.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <?php
@@ -21,8 +23,8 @@
 ?>
 <body>
     <div class = "sidebar" id = "sidebar_left">
-        <nav class="navbar">
-            <ul class="nav-list"><?php 
+        <nav class="nav">
+            <ul class="nav_list"><?php 
 
                 if(isset($_SESSION["user"]))
                     NavbarView::outputNavOptionsLoggedIn();
@@ -33,7 +35,7 @@
             </ul>
         </nav>
     </div>
-    <section id = "content">
+    <section id="content">
 <?php       // PHP section
 
             if(isset($_GET["user"]) && $username = trim(htmlspecialchars($_GET["user"]))) {
@@ -43,8 +45,8 @@
                 if(empty($user))
                     header("Location: Index.php");
 
-                $userView = new UserView($user);
-                $userView->outputUser();
+                $panelView = new PanelView($user);
+                $panelView->outputPanel();
 
                 if(isset($_GET["offset"]) && !empty($_GET["offset"]))
                 $offset = intval($_GET["offset"]);

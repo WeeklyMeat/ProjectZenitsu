@@ -1,32 +1,33 @@
-.userProfile {
+.panel_container {
 
+    display: inline-block;
+    width: 88%;
+    padding: 6%;
+    border-bottom: 1px solid var(--accent-color);
+    margin-bottom: 3%;
+}
+
+.panel_avatar {
+
+    height: 8vh;
+    min-height: 50px;
+    width: 8vh;
+    min-width:50px;
+
+    border-radius: 50%;
     float: left;
-    padding: 5%;
-    margin-bottom: 7%;
-    box-shadow: 0px 0px 10px rgb(226, 226, 226);
-    width: 90%;
 }
 
-.userPicture {
+.panel_name {
 
-    width: 12vh;
-    height: 12vh;
-    min-width: 60px;
-    min-height: 60px;
-}
-
-.userParagraph {
-
-    margin-top: 5%;
-    padding: 0;
-    float: left;
-    width: 100%;
-}
-
-.userTitle {
-
-    margin: 0;
-    padding-left: 4%;
+    font-weight: bold;
     font-size: x-large;
-    float: left;
+    margin-top: 0;
+    margin-left: 10vh;
+}
+
+.panel_text {
+
+    margin-left: 10vh;
+    font-size: large;
 }
