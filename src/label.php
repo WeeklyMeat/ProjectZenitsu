@@ -22,7 +22,7 @@
     $labelContr = new LabelContr(new LabelModel($dbc));
     $postContr = new PostContr(new PostModel($dbc));
 
-    if(isset($_SESSION["id"]) && isset($_GET["label"]) && $name = trim(htmlspecialchars($_GET["label"]))) {
+    if(isset($_GET["label"]) && $name = trim(htmlspecialchars($_GET["label"]))) {
         $label = $labelContr->getLabelByName($name)[0];
         if(empty($label))
             header("Location: Index.php");
