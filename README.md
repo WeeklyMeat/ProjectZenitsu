@@ -22,4 +22,13 @@ The project was done using:
 A backup of the database is in \ProjectZenitsu\Database\ProjectZenitsuDB.sql.
 The MySQL user info is commented out. Please create the user with this data manually.
 
+The dump is in the same directory.
+The login data to the pre created users are:
+
+Username: Admin
+Password: 1234
+
+Username: ExampleUser
+Password: 1234
+
 You should be good to go!
