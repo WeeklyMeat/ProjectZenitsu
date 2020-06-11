@@ -19,8 +19,7 @@ The project was done using:
 
 # Setup
 
-A backup of the database is in \ProjectZenitsu\Database\ProjectZenitsuDB.sql
-The dumps are there as well.
-You can replace the \ProjectZenitsu\src\model\DatabaseConnection.php with the one with your data.
+A backup of the database is in \ProjectZenitsu\Database\ProjectZenitsuDB.sql.
+The MySQL user inof is commented out. Please create the user with this data manually.
 
 You should be good to go!
