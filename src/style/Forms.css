@@ -40,27 +40,3 @@
 
     transition: 0.3s;
 }
-
-#form_button {
-
-    font-family: 'Quicksand', sans-serif;
-    font-size: large;
-
-    width: 20%;
-    min-width: 70px;
-    margin-left: 40%;
-    padding: 0;
-    height: 4vh;
-
-    background-color: var(--accent-color);
-
-    border: 0;
-    border-radius: 5px;
-
-    transition: 0.3s;
-}
-
-#form_button:hover {
-
-    box-shadow: 0px 0px 10px var(--accent-color);
-}

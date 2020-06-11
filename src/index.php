@@ -59,7 +59,7 @@
             $postView->outputPosts();
 ?>
     </section>
-    <div class = "sidebar" id = "sidebar_right">
+    <div class="sidebar" id = "sidebar_right">
     </div>
 </body>
 </html>

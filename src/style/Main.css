@@ -20,6 +20,12 @@ body::-webkit-scrollbar {
 
     text-decoration: none;
     color: var(--text-color);
+    transition: 0.3s;
+}
+
+.link:hover {
+
+    color: var(--secondary-color);
 }
 
 .sidebar {
@@ -89,4 +95,29 @@ body::-webkit-scrollbar {
 
     float: left;
     overflow: auto;
+}
+
+.button {
+
+    font-family: 'Quicksand', sans-serif;
+    font-size: large;
+
+    width: 20%;
+    min-width: 70px;
+    margin-left: 40%;
+    padding: 0;
+    height: 4vh;
+
+    background-color: var(--accent-color);
+
+    border: 0;
+    border-radius: 5px;
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+
+    background-color: var(--secondary-color);
 }

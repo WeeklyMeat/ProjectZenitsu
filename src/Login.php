@@ -48,7 +48,7 @@
         <form action="Login.php" method="POST" class="form_container">
             <div class="form_field_container"><input type="text" name="username" class="form_field" placeholder="Username"></div>
             <div class="form_field_container"><input type="password" name="password" class="form_field" placeholder="Password"></div>
-            <input type="submit" name="submit" id="form_button">
+            <input type="submit" name="submit" value="Log in" class="button">
         </form>
     </section>
     <div class = "sidebar" id = "sidebar_right">
