@@ -66,7 +66,7 @@
         <div class="create_content_container">
             <form class="create_content_form" method="POST">
                 <textarea name="createComment" placeholder="Comment this post..." id="create_content_textarea" maxlength="255"></textarea>
-                <input name="createCommentSubmit" type="submit" class="button" id="create_content_button">
+                <input name="createCommentSubmit" type="submit" value="Post" class="button" id="create_content_button">
             </form>
         </div>
 <?php } ?>

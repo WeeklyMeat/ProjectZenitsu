@@ -70,7 +70,7 @@
         <div class="create_content_container">
             <form class="create_content_form" method="POST">
                 <textarea name="createPost" placeholder="Create a new post..." id="create_content_textarea" maxlength="255"></textarea>
-                <input name="createPostSubmit" type="submit" class="button" id="create_content_button">
+                <input name="createPostSubmit" type="submit" value="Post" class="button" id="create_content_button">
             </form>
         </div>
 <?php } ?>

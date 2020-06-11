@@ -11,11 +11,6 @@ html, body {
     color: var(--text-color);
 }
 
-body::-webkit-scrollbar {
-
-    display: none;
-}
-
 .link {
 
     text-decoration: none;
@@ -95,6 +90,11 @@ body::-webkit-scrollbar {
 
     float: left;
     overflow: auto;
+}
+
+#content::-webkit-scrollbar {
+
+    display: none;
 }
 
 .button {
